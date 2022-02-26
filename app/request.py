@@ -34,8 +34,9 @@ def load_results(sources_list):
         if name:
             source_object = Sources(id,name,description,url,country)
             source_results.append(source_object)
-        
-        
+            
+
+            
     return source_results
         
     
