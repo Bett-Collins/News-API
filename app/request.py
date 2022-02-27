@@ -14,7 +14,7 @@ Sources = sources.Sources
 
 # base_url = app.config['base_Url']
 
-news_api = 'https://newsapi.org/v2/top-headlines/sources?apiKey=d2058fcf62674d56874e601e24678c59'
+news_api = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=d2058fcf62674d56874e601e24678c59'
 
 
 def get_sources(sources):
@@ -36,13 +36,16 @@ def load_results(sources_list):
     for item in sources_list:
         id = item.get('id')
         name = item.get('name')
+        author = item.get('author')
         description =item.get('description')
-        url = item.get('url')
-        country =item.get('country')
+        url =item.get('url')
+        title = item.get('title')
         urlToImage = item.get('urlToImage')
-        
+        publishedAt = item.get('publishedAt')
+        content = item.get('content')
+       
         if name:
-            source_object = Sources(id,name,description,url,country,urlToImage)
+            source_object = Sources(id,name,author,description,url,title,urlToImage,publishedAt,content)
             source_results.append(source_object)
             
 
