@@ -17,16 +17,16 @@ Sources = sources.Sources
 news_api = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=d2058fcf62674d56874e601e24678c59'
 
 
-def get_sources(sources):
+def get_sources(articles):
     with urllib.request.urlopen(news_api) as url:
         get_source_data = url.read()
         source_response = json.loads(get_source_data)
         
         source_results = None
         
-        if source_response['sources']:
+        if source_response['articles']:
             
-            news_sources_list = source_response['sources']
+            news_sources_list = source_response['articles']
             source_results = load_results(news_sources_list)
             
     return source_results

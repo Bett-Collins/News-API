@@ -9,7 +9,7 @@ def index():
     
     message = 'Python application'
     
-    sources = get_sources('sources')
+    sources = get_sources('articles')
     print(sources)
     
     
