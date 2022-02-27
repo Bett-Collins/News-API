@@ -5,6 +5,15 @@ import urllib.request,json
 from .models import sources
 
 Sources = sources.Sources
+
+# #Getting api key
+
+# new_api = app.config[' API_KEY ']
+
+# #Getting the base url
+
+# base_url = app.config['base_Url']
+
 news_api = 'https://newsapi.org/v2/top-headlines/sources?apiKey=d2058fcf62674d56874e601e24678c59'
 
 
@@ -30,9 +39,10 @@ def load_results(sources_list):
         description =item.get('description')
         url = item.get('url')
         country =item.get('country')
+        urlToImage = item.get('urlToImage')
         
         if name:
-            source_object = Sources(id,name,description,url,country)
+            source_object = Sources(id,name,description,url,country,urlToImage)
             source_results.append(source_object)
             
 

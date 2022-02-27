@@ -2,8 +2,8 @@ class Config:
     '''
     General configuration parent class
     '''
-    API_KEY = 'd2058fcf62674d56874e601e24678c59'
-    base_Url = 'https://newsapi.org/v2/top-headlines/sources?apiKey='
+API_KEY = 'd2058fcf62674d56874e601e24678c59'
+base_Url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey='
 
 
 

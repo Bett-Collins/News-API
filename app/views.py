@@ -1,3 +1,5 @@
+
+
 from flask import render_template
 from app import app
 from . request import get_sources
@@ -12,3 +14,4 @@ def index():
     
     
     return render_template('index.html',sources = sources, message = message)  
+
