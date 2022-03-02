@@ -1,20 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python</title>
-</head>
+
 <body>
- 
-    <h2>{{message}}</h2>
-    <ul>
-      {%for busines_news in busines_news%}
+  {% block content %}
+  <div class="center">
+      <center>
+           {{ header }}</h1>
+      </center>
+  </div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-4">
+              <h3 style="margin-left: 50px;">News Sources</h3>
+              {% for articles in articles %}
+           
+                  <h4><a href="{{ article.title}}">{{ top_news.description }}</a></h4>
+           
+              {% endfor %}
 
-     <li>{{bussines_news.title}}</li>
-
-      {%endfor%}
-  </ul>
+               {% endblock %}
 
 </body>

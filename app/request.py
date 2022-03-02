@@ -6,14 +6,14 @@ News = news.News
 
 
 
-top_news_url = app.config['NEWS_TOP']
+news_url = app.config['NEWS_TOP']
 
 
 def get_news(articles):
 
     
 
-    with urllib.request.urlopen(top_news_url) as url:
+    with urllib.request.urlopen(news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
 
