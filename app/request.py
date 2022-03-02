@@ -1,60 +1,65 @@
-from inspect import getsource
 from app import app
-import urllib.request,json
+import urllib.request, json
+from .models import news
 
-from .models import sources
-
-Sources = sources.Sources
-
-# #Getting api key
-
-# new_api = app.config[' API_KEY ']
-
-# #Getting the base url
-
-# base_url = app.config['base_Url']
-
-news_api = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=d2058fcf62674d56874e601e24678c59'
+News = news.News
 
 
-def get_sources(articles):
-    with urllib.request.urlopen(news_api) as url:
-        get_source_data = url.read()
-        source_response = json.loads(get_source_data)
-        
-        source_results = None
-        
-        if source_response['articles']:
-            
-            news_sources_list = source_response['articles']
-            source_results = load_results(news_sources_list)
-            
-    return source_results
 
-def load_results(sources_list):
-    source_results = []
-    for item in sources_list:
-        id = item.get('id')
-        name = item.get('name')
-        author = item.get('author')
-        description =item.get('description')
-        url =item.get('url')
-        title = item.get('title')
-        urlToImage = item.get('urlToImage')
-        publishedAt = item.get('publishedAt')
-        content = item.get('content')
-       
-        if name:
-            source_object = Sources(id,name,author,description,url,title,urlToImage,publishedAt,content)
-            source_results.append(source_object)
-            
+top_news_url = app.config['NEWS_TOP']
 
-            
-    return source_results
-        
+
+def get_news(articles):
+
     
-                
-            
+
+    with urllib.request.urlopen(top_news_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+
+        news_results = None
+
+        if get_news_response['articles']:
+
+            news_results_list = get_news_response['articles']
+
+            news_results = process_results(news_results_list)
+
+
         
-            
-        
+    return news_results
+
+
+
+
+def process_results(news_list):
+
+    news_results = []
+    for news_item in news_list:
+        source_name = news_item.get('source_name') 
+        author = news_item.get('author')
+        description =news_item.get('description')
+        url =news_item.get('url')
+        title = news_item.get('title')
+        urlToImage = news_item.get('urlToImage')
+        publishedAt = news_item.get('publishedAt')
+        content = news_item.get('content')
+     
+
+    if source_name:
+
+            news_object = News(source_name,author,description,url,title,urlToImage,publishedAt,content)
+            news_results.append(news_object)
+
+
+
+    return news_results
+
+
+
+
+
+
+
+     
