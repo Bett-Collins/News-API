@@ -1,26 +1,15 @@
-{% extends 'base.html'%}
-<body>
-  {% block styles%}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',styles.css='css/styles.css')}}">
-{% endblock %}
-  {% block content %}
-  <div class="center">
-      <center>
-           {{ header }}</h1>
-      </center>
-  </div>
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-sm-4">
-              <h3 style="margin-left: 50px;">News Headlines</h3>
-              {% for articles in articles %}
-           
-                  <h4><a href="{{ article.title}}">{{ top_news.description }}</a></h4>
-           
-              {% endfor %}
-              {% endblock %}
-               {
-        
 
-</body>
+{% import 'macros.html' as macro %}
+
+
+
+<!--content block-->
+{% block content %}
+
+<!--Headlines-->
+<h2>Global News Headlines</h2>
+<ul>
+    {{macro.displayHeadlinesList(headlines)}}
+</ul>
+
+{% endblock %}
