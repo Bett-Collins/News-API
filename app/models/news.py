@@ -1,4 +1,4 @@
-class Sources:
+class News:
     
     def __init__(self,id,name,author,description,title,url,urlToImage,publishedAt,content):
         
@@ -11,5 +11,7 @@ class Sources:
         self.urlToImage = urlToImage
         self.publishedAt  = publishedAt
         self.content = content
+
+
 
      
