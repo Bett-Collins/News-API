@@ -19,7 +19,7 @@ def headlines(title):
     '''
     View headlines page function that returns headlines details page and its data
     '''
-    headline = get_article(title)
+    headline = get_sources_articles(title)
     title = f'{article.title}'
 
     return render_template('headlines.html', title = title, headline = headline)
