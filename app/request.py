@@ -1,19 +1,19 @@
 from app import app
 import urllib.request, json
-from .models import news
+from . models import news
 
 News = news.News
 
 
 
-news_url = app.config['NEWS_TOP']
+NEWS_TOP ='https://newsapi.org/v2/top-headlines?country=us&apiKey=d2058fcf62674d56874e601e24678c59'
 
 
 def get_news(articles):
 
     
 
-    with urllib.request.urlopen(news_url) as url:
+    with urllib.request.urlopen(NEWS_TOP) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
 
